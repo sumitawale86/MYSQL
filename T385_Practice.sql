@@ -52,7 +52,9 @@ CREATE TABLE Loans (
 );
 
 show tables;
-c
+
+
+
 
 
 
