@@ -160,6 +160,88 @@ update Employee set location = "Thane";
 select * from Employee;
 
 
+select * from Employee;
+
+use Employee;
+
+select * from Employee;
+
+show tables;
+
+select * from Employee;
+
+update Employee set Title ="Mr.";
+
+alter table Employee add Title varchar(4);
+
+update Employee set Title ="Mr.";
+
+
+update Employee set Title ="Mrs." where gender ="Female";
+
+update Employee set salary =55000 where fullname ="Mary Smith";
+
+select * from Employee;
+
+delete from Employee where EmployeeID =1010;
+
+select * from Employee order by fullname desc;   -- desc means in Descending order ----
+
+select * from Employee order by EmployeeID desc;
+
+-- W G H O sequence --- WHERE --- GROUP BY --- HAVING --- ORDER BY ---
+
+select * from Employee LIMIT 3;
+
+select * from Employee order by fullname LIMIT 3;    -- limit --- is used omly in last of query -----
+
+
+select * from Employee LIMIT 5,3;
+
+select * from Employee LIMIT 2,5;
+
+select * from Employee LIMIT 5 offset 2;     -- offset --- alternate method ---
+
+
+
+select * from Employee where EmployeeID % 2 = 0;
+
+select * from Employee where salary >50000;
+
+
+
+
+
+
+
+
+-- use avg for average ----
+
+
+
+select * from Projects;
+
+-- used NULL and IS NOT Null comment-----
+
+select * from Projects where employeeID IS NULL;
+
+select * from Projects where employeeID IS not NULL;
+
+-- GROUP BY Clause --
+
+select * from employee;
+select DEPT,count(dept) from employee group by DEPT;
+select DEPT,count(fullname) from employee group by DEPT;
+select DEPT,count(*) from employee group by DEPT;
+select gender,count(*) from employee group by gender;
+
+select * from employee;
+select dept,sum(salary) from employee group by dept;
+select dept,avg(age) from employee group by dept;
+
+-- use TRUNCATE clause ---
+select DEPT, truncate(avg(AGE),0) from EMPLOYEE group by DEPT;
+select truncate(123.4567856,-2);
 
 
 
