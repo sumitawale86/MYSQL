@@ -244,10 +244,63 @@ select DEPT, truncate(avg(AGE),0) from EMPLOYEE group by DEPT;
 select truncate(123.4567856,-2);
 
 
+-- Distinct command ----
 
+use Employee;
+show tables;
+select distinct DEPT, gender from employee;
 
+-- not operator ----
 
+select * from employee;
+select * from employee where age not in	(23,28);
+select * from employee where age in	(23,28);
 
+-- between operator command ----
+
+select * from employee	where salary between 40000 and 60000;
+
+-- show me all the records of employee whose age is either 25 or 28
+select * from employee	where employeeId in (1004,1007,1003,1010);
+
+-- show me all the records of employee whose age is either 25 to 28
+select * from employee where age between 25 and 28;
+
+-- like operator command----
+
+select * from employee;
+select * from employee where fullname like "A%";
+select * from employee where fullname like "%Y";
+select * from employee where fullname like "%i%";
+select * from employee where fullname like "_i%";
+select * from employee where fullname like "__u%";
+select * from employee where fullname like "%n__";
+select * from employee where fullname not like "p%";
+
+-- null operator ---
+
+select * from Projects;
+select * from Projects where employeeID is null;
+select * from Projects where employeeID is not null;
+
+-- group by and having command --- having used only in group by command and it is optional --
+
+select * from employee;
+select DEPT, count(*) from employee group by DEPT;
+select DEPT, count(*) from employee group by DEPT HAVING count(*)>3;
+select DEPT, count(*) from employee group by DEPT HAVING count(*)>2;
+select gender, sum(salary) from employee group by gender having sum(salary);
+
+select * from Address;
+select city, count(*) from Address group by city;
+select state, count(*) from Address group by state;
+select city, count(*) from Address group by city having count(*);
+
+select * from Projects;
+select datediff(ENDDATE,STARTDATE) AS DURATION FROM Projects;
+select datediff(ENDDATE,STARTDATE) AS DURATION, count(*) FROM Projects GROUP BY datediff(ENDDATE,STARTDATE);
+select datediff(ENDDATE,STARTDATE) AS DURATION, count(*) FROM Projects GROUP BY datediff(ENDDATE,STARTDATE) having count(*)>=2;
+select datediff(ENDDATE,STARTDATE) AS DURATION, count(*) FROM Projects where employeeId>1004 GROUP BY datediff(ENDDATE,STARTDATE) having count(*)>=2;
 
 
 
