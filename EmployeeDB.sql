@@ -171,9 +171,7 @@ show tables;
 select * from Employee;
 
 update Employee set Title ="Mr.";
-
 alter table Employee add Title varchar(4);
-
 update Employee set Title ="Mr.";
 
 
@@ -192,16 +190,12 @@ select * from Employee order by EmployeeID desc;
 -- W G H O sequence --- WHERE --- GROUP BY --- HAVING --- ORDER BY ---
 
 select * from Employee LIMIT 3;
-
 select * from Employee order by fullname LIMIT 3;    -- limit --- is used omly in last of query -----
 
 
 select * from Employee LIMIT 5,3;
-
 select * from Employee LIMIT 2,5;
-
 select * from Employee LIMIT 5 offset 2;     -- offset --- alternate method ---
-
 
 
 select * from Employee where EmployeeID % 2 = 0;
@@ -209,22 +203,13 @@ select * from Employee where EmployeeID % 2 = 0;
 select * from Employee where salary >50000;
 
 
-
-
-
-
-
-
 -- use avg for average ----
-
-
 
 select * from Projects;
 
 -- used NULL and IS NOT Null comment-----
 
 select * from Projects where employeeID IS NULL;
-
 select * from Projects where employeeID IS not NULL;
 
 -- GROUP BY Clause --
@@ -240,6 +225,7 @@ select dept,sum(salary) from employee group by dept;
 select dept,avg(age) from employee group by dept;
 
 -- use TRUNCATE clause ---
+
 select DEPT, truncate(avg(AGE),0) from EMPLOYEE group by DEPT;
 select truncate(123.4567856,-2);
 
@@ -301,6 +287,36 @@ select datediff(ENDDATE,STARTDATE) AS DURATION FROM Projects;
 select datediff(ENDDATE,STARTDATE) AS DURATION, count(*) FROM Projects GROUP BY datediff(ENDDATE,STARTDATE);
 select datediff(ENDDATE,STARTDATE) AS DURATION, count(*) FROM Projects GROUP BY datediff(ENDDATE,STARTDATE) having count(*)>=2;
 select datediff(ENDDATE,STARTDATE) AS DURATION, count(*) FROM Projects where employeeId>1004 GROUP BY datediff(ENDDATE,STARTDATE) having count(*)>=2;
+
+
+-- string function in SQL --- 
+select * from Employee;
+SELECT *, concat(Fullname), "_",employeeid as specific_code from employee;
+select concat("Good","Morning") as remarks;
+
+select * from Employee;
+
+select fullname, lower(fullname) from employee;
+select fullname, upper(fullname) from employee;
+select fullname, replace(fullname, "Mohanty", "Kulkarni") as New_Name from employee;
+select * from Employee;
+UPDATE employee set fullname = "Sambit Kulkarni" where EmployeeId = 1008;
+UPDATE employee set fullname = "Sambit Mohanty" where EmployeeId = 1008;
+
+-- substring ---
+select substring("Mary Smith",2,3);
+select fullname, substring(fullname, 2,3) as partial,
+length(substring(fullname, 2,3)) as length from employee;
+
+insert into trim_ex
+values
+("Sunil"),
+("  Anjan")
+("Kunal  ")
+
+
+
+
 
 
 
