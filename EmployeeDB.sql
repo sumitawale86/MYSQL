@@ -311,8 +311,87 @@ length(substring(fullname, 2,3)) as length from employee;
 insert into trim_ex
 values
 ("Sunil"),
-("  Anjan")
-("Kunal  ")
+("  Anjan"),
+("Kunal  ");
+
+-- Reverse function ---
+
+select * from Employee;
+select fullname, reverse(fullname) from employee;
+select reverse("Amit");
+
+-- ABSOLUTE FUCTION --- it writtens unsigned numbers --
+
+SELECT abs(-45455);
+select abs(+454545);
+
+select datediff(startdate, enddate)
+as duration from projects;
+select abs(datediff(startdate,enddate) )
+as duration from projects;
+
+-- MODULUS FUCTION ---
+
+select mod(12,5);  --  In that is division by using "," ---
+select mod(12,7);
+
+ -- FLOOR AND CEILLING FUCTION -- IMPORTANT --
+ 
+select floor(14.7);   -- FLOOR should be shows downward value --
+select ceil(14.9);    -- CEILLING should be shows upward value --
+select truncate(14.34567,3);
+select truncate(15.4678456,4);
+select truncate(15.4678456,0);
+select truncate(15.4678456,-1);
+select truncate(14675.4678456,-1); 
+
+-- EXPONENTIAL FUCTION --
+SELECT exp(2);  -- here captured e value --
+
+-- POWER FUCTION --
+SELECT power(3,3);
+SELECT pow(13,2);
+
+-- SQUARE ROOT FUCTION --
+select sqrt(144);
+
+-- CURRUNT DATE FUCTION --
+select curdate();
+Select now();
+select now();
+
+-- SYSTEM DATE FUNCTION --
+Select sysdate();   -- currunt date and system date are same --
+
+select last_day(now());
+select last_day("2026-02-22");
+
+-- DATE_FORMAT --
+
+select date_format(now(), "%b");
+select date_format(now(), "%M");
+select date_format(now(), "%Y");
+select date_format(now(), "%y");
+select date_format(now(), "%a %b");  -- a mention week (sun to sat) and b mention month (Jan to Dec) and y mention year furction --
+select date_format(now(), "%a %b"); 
+select date_format("1998-11-08", "%D-%M-%Y, %W") AS DATE;
+select datediff(now(),"1998-11-08") AS days;
+
+select month(now());
+select year(now());
+
+SELECT * from employee;
+select avg(salary) from employee where DEPT ="IT";
+SELECT count(gender) from employee;
+select max(salary) from employee;
+select min(salary) from employee where gender ="Male";
+
+
+
+
+
+
+
 
 
 

@@ -76,3 +76,11 @@ insert into Voter_list_2 values
 (20068, "Anuja Patil",44,default);
 
 
+
+
+
+
+
+
+
+
