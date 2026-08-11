@@ -386,15 +386,61 @@ SELECT count(gender) from employee;
 select max(salary) from employee;
 select min(salary) from employee where gender ="Male";
 
+-- SUB QUERIES -- 
+-- LEFT JOIN --
 
+use employee;
+select employee.employeeID,fullname,city from employee 
+left join
+address
+on employee.employeeID =address.employeeID;
 
+use employee;
+select projects.employeeID,projectname,state from projects
+left join
+address
+on projects.employeeID =address.employeeID;
 
+-- INNER JOIN --
 
+select projects.employeeID,projectname,state from projects
+join
+address
+on projects.employeeID =address.employeeID;
 
+-- RIGHT JOIN --
 
+select projects.employeeID,projectname,state from projects
+right join
+address
+on projects.employeeID =address.employeeID;
 
+select employee.employeeID,fullname,city from 
+address
+right join
+employee
+on employee.employeeID =address.employeeID;
 
+select employee.employeeID,fullname,projectname, abs(datediff(startdate,enddate)) as duration from
+employee
+left join
+projects
+on employee.employeeID =projects.employeeID;
 
+select * from employee;
+select * from projects;
+
+-- JOIN 3 TABLES --
+
+select fullname, projectname, state 
+from employee as E
+left join projects as P
+on E.employeeID =P.employeeID
+left join
+address as A
+on A.employeeID =E.employeeID;
+
+-- E employeeID, FULLNAME, DEPARTMENT, GENDER,PROJECTNAME, DURATION AND COUNTRY
 
 
 
