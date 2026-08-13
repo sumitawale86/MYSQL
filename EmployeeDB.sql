@@ -440,8 +440,28 @@ left join
 address as A
 on A.employeeID =E.employeeID;
 
--- E employeeID, FULLNAME, DEPARTMENT, GENDER,PROJECTNAME, DURATION AND COUNTRY
+-- E employeeID, FULLNAME, DEPARTMENT, GENDER,PROJECTNAME, DURATION AND COUNTRY --
 
+-- SUB QUERIES FUNTION ---
 
+use employee;
+select DEPT from employee where employeeid = 1001;
+select fullname, DEPT from employee where DEPT = "IT";
+select fullname, DEPT from employee where DEPT = (select DEPT from employee where employeeid = 1001);
 
+select age from employee where employeeid = 1003;
+select fullname, age from employee where age = 28;
+select fullname, age from employee where age = (select age from employee where employeeid = 1003);
 
+select projectname from projects where employeeid = 1004;
+
+use employee;
+select max(salary) from employee;
+select fullname, salary from employee where salary = 75000;
+select fullname, salary from employee where salary = (select max(salary) from employee);
+
+select * from employee;
+select fullname, salary from employee where salary = 75000;
+select fullname, salary from employee where salary = (select max(salary) from employee);
+
+select fullname, salary from employee where salary = (select max(salary) from employee where salary <(select max(salary) from employee));
