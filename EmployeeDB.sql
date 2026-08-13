@@ -138,10 +138,6 @@ remarks varchar(20)
 insert into simple(remarks) values
 
 
-select now();
-
-select * from Projects;
-
 
 select now();
 
@@ -346,6 +342,7 @@ select truncate(15.4678456,-1);
 select truncate(14675.4678456,-1); 
 
 -- EXPONENTIAL FUCTION --
+
 SELECT exp(2);  -- here captured e value --
 
 -- POWER FUCTION --
@@ -465,3 +462,40 @@ select fullname, salary from employee where salary = 75000;
 select fullname, salary from employee where salary = (select max(salary) from employee);
 
 select fullname, salary from employee where salary = (select max(salary) from employee where salary <(select max(salary) from employee));
+
+-- SUB QUERY WITH IN FUCTION --
+use employee;
+select * from employee;
+select salary from employee 
+where fullname = "Mary Smith"
+or
+fullname = "James Brown";
+
+select fullname, salary from employee
+ where salary in (select salary from employee where
+ fullname = "Mary Smith"
+ or 
+ fullname = "James Brown");
+
+-- ANY FUCTION --- 
+
+select * from employee
+where 
+age < any(select age from employee where fullname in ("Anurag Mohanty","Mary Smith"));
+
+select * from employee
+where 
+age <(select age from employee where fullname = "Anurag Mohanty")
+or
+age <(select age from employee where fullname = "Mary Smith");
+
+select * from employee
+where 
+age < all(select age from employee where fullname in ("Anurag Mohanty","Mary Smith"));
+
+select * from employee
+where 
+age <(select age from employee where fullname = "James Brown")
+and
+age <(select age from employee where fullname = "Mary Smith");
+
