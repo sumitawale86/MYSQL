@@ -499,3 +499,33 @@ age <(select age from employee where fullname = "James Brown")
 and
 age <(select age from employee where fullname = "Mary Smith");
 
+
+SELECT DATABASE();
+USE employee;
+show tables;
+alter table employee modify DEPT varchar(50);
+update employee set salary =salary +10000;
+
+
+-- VIEW FUCTION --
+SELECT fullname,projectname from employee as E
+left join
+projects as P
+on E.employeeid = P.employeeid;
+
+SELECT E.employeeid, fullname,projectname from employee as E
+left join
+projects as P
+on E.employeeid = P.employeeid;
+
+CREATE VIEW my_join1 as
+SELECT E.employeeid,fullname,projectname from employee as E
+left join
+projects as P
+on E.employeeid = P.employeeid;
+
+select * from my_join1;
+
+
+
+
