@@ -526,6 +526,19 @@ on E.employeeid = P.employeeid;
 
 select * from my_join1;
 
+-- NORMALIZATION FUCTION --  sorting or clining the data or removing duplicate data--
+-- first normal form (1NF) -- tackle the problems of atomicity --
+-- second normal form (2NF) -- it is in 1st NF and to check partial dependency --
+-- third normal form (3NF) -- it is in 2nd NF and used for remove transitive dependency --
+
+
+
+
+
+
+
+
+
 
 
 
