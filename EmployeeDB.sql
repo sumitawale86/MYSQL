@@ -531,14 +531,103 @@ select * from my_join1;
 -- second normal form (2NF) -- it is in 1st NF and to check partial dependency --
 -- third normal form (3NF) -- it is in 2nd NF and used for remove transitive dependency --
 
+-- WINDOWS FUCTION --
 
+use employee;
+select employeeID, fullname, DEPT, gender, salary,
+row_number() over (partition by DEPT)
+AS RankInDepartment
+from employee;
 
+select employeeID, fullname, DEPT, gender, salary,
+row_number() over (partition by gender)
+AS RankInDepartment
+from employee;
 
+-- RANKS --
+select employeeID, fullname, DEPT, gender, salary,
+rank() over (partition by DEPT)
+AS RankInDepartment
+from employee;
 
+select employeeID, fullname, DEPT, gender, salary,
+rank() over (partition by gender)
+AS RankInDepartment
+from employee;
 
+select 
+employeeID, 
+fullname, 
+DEPT, 
+salary,
+rank() over (order by salary desc) as overallsalaryrank
+from employee;
 
+select 
+employeeID, 
+fullname, 
+DEPT, 
+salary,
+rank() over (order by salary) as overallsalaryrank
+from employee;
 
+-- dense_rank doesnot skip number --
+select 
+employeeID, 
+fullname, 
+DEPT, 
+salary,
+dense_rank() over (order by salary desc) as overallsalaryrank
+from employee;
 
+select employeeID, fullname, DEPT, gender, salary,
+sum(salary) over (partition by DEPT)
+AS Department_wise_totalsalary
+from employee;
 
+select fullname, DEPT, salary,
+max(salary) over (partition by DEPT) 
+FROM employee;
 
+select fullname, DEPT, salary,
+count(*) over (partition by DEPT) 
+as Department_count
+FROM employee;
+
+select fullname, DEPT, salary,
+count(*) over (partition by DEPT) 
+as Department_count
+FROM employee;
+
+-- LAG FUCTION --
+select employeeID, fullname, DEPT, age, salary,
+LAG(salary, 1) over (order by employeeID) 
+as 1st_Youngers_Salary
+FROM employee;
+
+-- LEAD FUCTION --
+select employeeID, fullname, DEPT, age, salary,
+LEAD(salary, 1) over (order by employeeID) 
+as 1st_Youngers_Salary
+FROM employee;
+
+select employeeID, fullname, DEPT, age, salary,
+LEAD(salary, 2) over (order by employeeID) 
+as 1st_Youngers_Salary
+FROM employee;
+
+select employeeID, fullname, gender, age,
+avg(age) over (partition by gender)
+AS average_age
+from employee;
+
+select fullname, gender, age,
+avg(age) over (partition by gender)
+AS average_age
+from employee;
+
+select fullname, DEPT, age,
+avg(age) over (partition by DEPT)
+AS average_age
+from employee;
 
